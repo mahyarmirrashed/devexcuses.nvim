@@ -70,4 +70,24 @@ function M.get_excuse(count)
   return result
 end
 
+--- Inserts a specified number of random excuses at the current cursor position.
+--- @param count? number The number of excuses to insert (default: 1). Must be a strictly positive number.
+function M.insert_excuse(count)
+  count = count or 1
+  if count < 1 then
+    vim.notify("count must be a strictly positive number", vim.log.levels.WARN)
+    return
+  end
+
+  local excuses = M.get_excuse(count)
+  local lines = vim.tbl_map(function(e) return e.excuse end, excuses)
+  vim.api.nvim_put(lines, "l", true, true)
+end
+
+vim.api.nvim_create_user_command(
+  "Excuse",
+  function(opts) require("devexcuses").insert_excuse(tonumber(opts.args) or 1) end,
+  { nargs = "?" }
+)
+
 return M
