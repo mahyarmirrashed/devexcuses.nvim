@@ -65,8 +65,7 @@ USING LAZY.NVIM ~
 
 USAGE                                  *devexcuses.nvim-devexcuses.nvim-usage*
 
-The plugin provides a single function, `get_excuse(count)`, to retrieve random
-excuses.
+The plugin provides functions to retrieve and insert random excuses.
 
 
 EXAMPLE COMMANDS ~
@@ -87,6 +86,17 @@ EXAMPLE COMMANDS ~
 <
 
 
+EXCUSE COMMAND ~
+
+`:Excuse [count]` inserts a random excuse at the cursor position. Optionally
+accepts a count.
+
+>vim
+    :Excuse      " insert one excuse
+    :Excuse 3    " insert three excuses
+<
+
+
 FUNCTION DOCUMENTATION ~
 
 
@@ -94,6 +104,11 @@ GET_EXCUSE(COUNT?)
 
 - **count** (optional, number): Number of excuses to retrieve. Defaults to 1. Use `-1` to get all excuses
 - **Returns**: A table of excuse objects, each with an `excuse` field
+
+
+INSERT_EXCUSE(COUNT?)
+
+- **count** (optional, number): Number of excuses to insert at the cursor position. Defaults to 1. Must be a strictly positive number
 
 
 SETUP()
