@@ -41,7 +41,7 @@ Plug 'mahyarmirrashed/devexcuses.nvim'
 
 ## Usage
 
-The plugin provides a single function, `get_excuse(count)`, to retrieve random excuses.
+The plugin provides functions to retrieve and insert random excuses.
 
 ### Example Commands
 
@@ -60,12 +60,25 @@ end
 local all_excuses = require('devexcuses').get_excuse(-1)
 ```
 
+### Excuse Command
+
+`:Excuse [count]` inserts a random excuse at the cursor position. Optionally accepts a count.
+
+```vim
+:Excuse      " insert one excuse
+:Excuse 3    " insert three excuses
+```
+
 ### Function Documentation
 
 #### `get_excuse(count?)`
 
 - **count** (optional, number): Number of excuses to retrieve. Defaults to 1. Use `-1` to get all excuses
 - **Returns**: A table of excuse objects, each with an `excuse` field
+
+#### `insert_excuse(count?)`
+
+- **count** (optional, number): Number of excuses to insert at the cursor position. Defaults to 1. Must be a strictly positive number
 
 #### `setup()`
 
